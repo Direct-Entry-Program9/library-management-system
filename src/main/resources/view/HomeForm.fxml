@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="720.0" style="-fx-background-color: #02354e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeFormController">
+   <children>
+      <Label alignment="CENTER" layoutY="41.0" text="Library Management System" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="DejaVu Serif Bold" size="31.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="pneContainer" layoutX="20.0" layoutY="115.0" prefHeight="400.0" prefWidth="680.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="120.0" />
+      <Button fx:id="btnLogout" layoutX="500.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnLogoutOnAction" text="LOGOUT" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Logout.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

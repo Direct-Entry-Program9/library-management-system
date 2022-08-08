@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="680.0" style="-fx-background-color: #c9eeff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookStoreFormController">
+   <children>
+      <TableView fx:id="tblBooksDetails" layoutX="42.0" layoutY="183.0" prefHeight="199.0" prefWidth="640.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <columns>
+          <TableColumn prefWidth="110.0" text="ISBN " />
+          <TableColumn prefWidth="190.0" text="Name Of Book" />
+            <TableColumn minWidth="0.0" prefWidth="249.0" text="Author" />
+            <TableColumn minWidth="0.0" prefWidth="90.0" text="Quantity" />
+        </columns>
+      </TableView>
+      <Label layoutX="20.0" layoutY="19.0" text="Manage Books" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="DejaVu Sans Condensed Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAddNewBook" layoutX="24.0" layoutY="89.0" mnemonicParsing="false" onAction="#btnAddNewBookOnAction" prefHeight="46.0" prefWidth="141.0" styleClass="btnAdd" stylesheets="@../css/bookStoreForm.css" text="Add New Book" AnchorPane.leftAnchor="20.0">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtSearch" layoutX="20.0" layoutY="149.0" prefHeight="26.0" prefWidth="640.0" promptText=" Search Box" />
+      <HBox layoutX="343.0" layoutY="89.0" spacing="10.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Button fx:id="btnRemoveBook" mnemonicParsing="false" onAction="#btnRemoveBookOnAction" prefHeight="46.0" prefWidth="141.0" styleClass="btnAdd" stylesheets="@../css/bookStoreForm.css" text="Remove Book">
+               <font>
+                  <Font name="DejaVu Sans Mono Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdateBook" mnemonicParsing="false" onAction="#btnUpdateBookOnAction" prefHeight="46.0" prefWidth="141.0" styleClass="btnAdd" stylesheets="@../css/bookStoreForm.css" text="Update Book">
+               <font>
+                  <Font name="DejaVu Sans Mono Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Button fx:id="btnBack" layoutX="613.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBackOnAction" styleClass="btnAdd" stylesheets="@../css/bookStoreForm.css" text="Back">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
+         </font></Button>
+      <AnchorPane layoutY="64.0" prefHeight="9.0" prefWidth="282.0" style="-fx-background-color: #02354e;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0" />
+   </children>
+</AnchorPane>

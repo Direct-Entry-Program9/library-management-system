@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="420.0" prefWidth="313.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddUserFormController">
+   <children>
+      <VBox layoutX="14.0" layoutY="14.0" spacing="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+         <children>
+            <VBox prefHeight="49.0" prefWidth="277.0" spacing="5.0">
+               <children>
+                  <Label text="Registration Number : " />
+                  <TextField fx:id="txtRegNumber" promptText="M001" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="First Name : " />
+                  <TextField fx:id="txtFirstName" promptText="Ex : Manelka" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="Last Name : " />
+                  <TextField fx:id="txtLastName" promptText="Ex : Kodithuwakku" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="NIC : " />
+                  <TextField fx:id="txtNIC" promptText="Ex : 123456789v" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="ADDRESS : " />
+                  <TextField fx:id="txtAddress" promptText="Galle Road, Panadura" />
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="TelePhone Number : " />
+                  <TextField fx:id="txtMobileNumber" promptText="Ex : 070-1234567" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Button fx:id="btnAdd" defaultButton="true" layoutX="124.0" layoutY="372.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="34.0" prefWidth="66.0" text="Add">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

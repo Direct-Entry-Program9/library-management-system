@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="407.0" prefWidth="355.0" style="-fx-background-color: rgba(2,53,78,255);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SplashScreenFormController">
+   <children>
+      <ImageView fitHeight="300.0" fitWidth="297.0" layoutX="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/photo-library-icon-3.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="pgbProgress" arcHeight="5.0" arcWidth="5.0" fill="#02354e" height="7.0" layoutX="34.0" layoutY="397.0" stroke="#02354e" strokeType="INSIDE" width="355.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Rectangle fx:id="pgbLoading" arcHeight="5.0" arcWidth="5.0" fill="#0fd701" height="7.0" layoutX="63.0" layoutY="364.0" stroke="#0fd701" strokeType="INSIDE" width="17.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+      <Label fx:id="lblLoading" alignment="CENTER" layoutX="148.0" layoutY="361.0" text="Loading..." textFill="#d5c8b0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <ImageView fitHeight="83.0" fitWidth="95.0" layoutX="136.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/load2.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

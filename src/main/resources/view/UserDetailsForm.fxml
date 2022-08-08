@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="330.0" prefWidth="533.0" style="-fx-background-color: #02354e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserDetailsFormController">
+   <children>
+      <AnchorPane fx:id="pneCard" layoutY="52.0" prefHeight="213.0" prefWidth="479.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fitHeight="213.0" fitWidth="412.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="213.30020141601562" AnchorPane.topAnchor="1.0">
+               <image>
+                  <Image url="@../image/background.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="213.0" fitWidth="354.0" layoutX="213.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/background.jpg" />
+               </image>
+            </ImageView>
+            <VBox layoutX="168.0" layoutY="32.0" prefHeight="93.0" prefWidth="337.0" spacing="10.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label text="Membership Number : ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblRegNumber" prefHeight="18.0" prefWidth="165.0" text="U001">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Full Name                      : ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblFullName" prefHeight="18.0" prefWidth="165.0" text="Manelka Kodithuwakku">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="NIC Number                 : ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNIC" prefHeight="18.0" prefWidth="165.0" text="960171209v">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Address                         : ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblAddress" prefHeight="18.0" prefWidth="165.0" text="Ratnapura">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Mobile Number           : ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblMobileNumber" prefHeight="18.0" prefWidth="165.0" text="0702019193">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fx:id="imgQR" fitHeight="147.0" fitWidth="139.0" layoutX="14.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/QR.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="146.0" layoutY="15.0" text="Membership Card" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="DejaVu Serif Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnDownload" layoutX="14.0" layoutY="282.0" mnemonicParsing="false" onAction="#btnDownloadOnAction" text="Download">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblClose" layoutX="503.0" layoutY="11.0" onMouseClicked="#lblOnMouseClicked" text="❌" textFill="RED">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

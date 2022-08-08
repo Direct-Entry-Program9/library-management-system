@@ -1,0 +1,9 @@
+.btnLogin{
+    -fx-background-color: rgba(41,123,245,1);
+    -fx-background-radius: 40px;
+}
+
+.btnLogin:hover, .btnLogin:focused{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(41,123,245,0.8);
+}
