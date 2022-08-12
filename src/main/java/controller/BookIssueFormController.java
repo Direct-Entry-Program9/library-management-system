@@ -24,6 +24,7 @@ public class BookIssueFormController {
     public Button btnBack;
     public DatePicker dtpIssueDate;
     public DatePicker dtpReturnDate;
+    public static int maximumBook = 3;
     Jedis jedis;
 
     public void initialize(){
@@ -97,12 +98,32 @@ public class BookIssueFormController {
             return;
         }
 
+        ArrayList<IssueBook> issueBooksArray = IntMemoryDB.findIssueBooks(txtNIC.getText());
+        for (IssueBook issueBook : issueBooksArray) {
+            if (issueBook.getISBN().equalsIgnoreCase(txtISBN.getText())){
+                new Alert(Alert.AlertType.ERROR,"Already issue this book for this user").show();
+                txtISBN.requestFocus();
+                return;
+            }
+        }
+        if (issueBooksArray.size()>maximumBook-1){
+            new Alert(Alert.AlertType.ERROR,"Only "+ maximumBook +" books can issue per one user").show();
+            txtISBN.clear();
+            txtNIC.requestFocus();
+            return;
+        }
+
+        new Alert(Alert.AlertType.INFORMATION,"Successfully Issue Book").show();
+
+        String keyIssueBook = "issueBook-"+txtNIC.getText()+"-"+txtISBN.getText();
+
         IssueBook issueBook = new IssueBook(txtNIC.getText(), txtISBN.getText(), dtpIssueDate.getValue(), dtpReturnDate.getValue());
 
         IntMemoryDB.addNewIssueBook(issueBook);
-        jedis.hset(issueBook.getNic(),"isbn",issueBook.getISBN());
-        jedis.hset(issueBook.getNic(),"issueDate", String.valueOf(issueBook.getIssueDate()));
-        jedis.hset(issueBook.getNic(),"returnDate", String.valueOf(issueBook.getReturnDate()));
+        jedis.hset(keyIssueBook,"nic",issueBook.getNic());
+        jedis.hset(keyIssueBook,"isbn",issueBook.getISBN());
+        jedis.hset(keyIssueBook,"issueDate", String.valueOf(issueBook.getIssueDate()));
+        jedis.hset(keyIssueBook,"returnDate", String.valueOf(issueBook.getReturnDate()));
 
         int newQuantity=quantity-1;
         book.setQuantity(String.valueOf(newQuantity));

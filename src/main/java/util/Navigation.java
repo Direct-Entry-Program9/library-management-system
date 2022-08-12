@@ -40,7 +40,7 @@ public class Navigation {
             case REPORT:
                 resource = Navigation.class.getResource("/view/ReportForm.fxml");
                 break;
-            default:
+            case SETTING:
                 resource = Navigation.class.getResource("/view/SettingsForm.fxml");
                 break;
         }

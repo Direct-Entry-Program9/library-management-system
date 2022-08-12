@@ -2,7 +2,11 @@ package controller;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.WindowEvent;
+import redis.clients.jedis.Jedis;
 import util.Navigation;
 import util.Routes;
 
@@ -16,9 +20,11 @@ public class AdminDashboardFormController {
     public Button btnReport;
     public Button btnSettings;
     public Button btnExit;
+    public AnchorPane pneAdminDashboard;
 
     public void initialize(){
         Platform.runLater(btnManageBook::requestFocus);
+
     }
 
     public void btnManageBookOnAction(ActionEvent actionEvent) throws IOException {
@@ -38,7 +44,8 @@ public class AdminDashboardFormController {
     }
 
     public void btnSettingsOnAction(ActionEvent actionEvent) throws IOException {
-        Navigation.navigate(Routes.SETTING);
+        Object ctrl = Navigation.navigate(Routes.SETTING);
+
     }
 
     public void btnReportOnAction(ActionEvent actionEvent) throws IOException {

@@ -25,7 +25,10 @@ public class SplashScreenFormController {
     public Rectangle pgbLoading;
     public Label lblLoading;
 
-    public void initialize(){
+    public void initialize() throws IOException {
+
+        var redisFilePath2 = System.getProperty("user.dir")+"/redis2.conf";
+        Runtime.getRuntime().exec(new String[]{"redis-server",redisFilePath2});
 
         Timeline timeline = new Timeline();
         KeyFrame keyFrame1 = new KeyFrame(Duration.millis(500), new EventHandler<ActionEvent>() {

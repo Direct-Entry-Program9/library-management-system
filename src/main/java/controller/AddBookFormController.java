@@ -26,7 +26,7 @@ public class AddBookFormController {
     Jedis jedis;
 
     public void initialize(){
-        jedis = new Jedis("127.0.0.1", 10001);
+        jedis = new Jedis("127.0.0.1", 10003);
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
@@ -54,7 +54,7 @@ public class AddBookFormController {
             new Alert(Alert.AlertType.ERROR,"Author Name should be letter").showAndWait();
             txtAuthor.requestFocus();
             return;
-        } else if (IntMemoryDB.isEmpty(author)) {
+        } else if (IntMemoryDB.isEmpty(quantity)) {
             txtAuthor.requestFocus();
             return;
         } else if (!IntMemoryDB.isNumber(quantity)) {
@@ -66,22 +66,27 @@ public class AddBookFormController {
         Book book = new Book(iSBN, bookName, author, quantity);
         boolean success = IntMemoryDB.addNewBook(book);
 
+        String keyBook = "book-"+iSBN;
+
         if (success){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure ? ", ButtonType.OK, ButtonType.CANCEL);
-            alert.setHeaderText("Your book will successfully added to the system.");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to add this book? ", ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> selectedOption = alert.showAndWait();
-            if (selectedOption.get()==ButtonType.OK){
+            if (selectedOption.get()==ButtonType.YES){
+                new Alert(Alert.AlertType.INFORMATION,"Your book will successfully added to the system.").show();
                 BookStoreFormController ctrl = (BookStoreFormController) Navigation.navigate(Routes.BOOK_STORE);
-                jedis.hset(book.getIsbnNumber(),"book-name",book.getName());
-                jedis.hset(book.getIsbnNumber(),"book-author",book.getAuthor());
-                jedis.hset(book.getIsbnNumber(),"book-qt",book.getQuantity());
+                jedis.hset(keyBook,"book-isbn",book.getIsbnNumber());
+                jedis.hset(keyBook,"book-name",book.getName());
+                jedis.hset(keyBook,"book-author",book.getAuthor());
+                jedis.hset(keyBook,"book-qt",book.getQuantity());
                 ctrl.tblBooksDetails.refresh();
                 btnAdd.getScene().getWindow().hide();
             }else {
+                jedis.del(keyBook);
                 IntMemoryDB.removeBook(book.getIsbnNumber());
             }
         }else{
             new Alert(Alert.AlertType.ERROR, "This Book is already available in your library").showAndWait();
+            txtISBN.requestFocus();
         }
 
     }

@@ -113,8 +113,12 @@ public class BookReturnFormController {
         int currentQt = Integer.parseInt(returnBookSetQt.getQuantity());
         returnBookSetQt.setQuantity(String.valueOf(currentQt+1));
 
+        new Alert(Alert.AlertType.INFORMATION,"Successfully Return Book").show();
+
+        String keyIssueBook = "issueBook-"+returnBook.getNic()+"-"+returnBook.getISBN();
+
         IntMemoryDB.removeIssueBook(returnBook);
-        jedis.del(returnBook.getNic());
+        jedis.del(keyIssueBook);
 
         txtName.clear();
         txtNIC.setValue(null);

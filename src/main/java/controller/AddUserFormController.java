@@ -32,7 +32,7 @@ public class AddUserFormController {
         txtRegNumber.setDisable(true);
 
 
-        jedis = new Jedis("127.0.0.1",10002);
+        jedis = new Jedis("127.0.0.1",10003);
 
     }
 
@@ -75,25 +75,28 @@ public class AddUserFormController {
 
         User user = new User(regNumber,fullName,nic,address,mobileNumber);
         boolean success = IntMemoryDB.addNewUser(user);
+        String keyUser = "user-"+regNumber;
 
         if (success){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure ? ", ButtonType.OK, ButtonType.CANCEL);
-            alert.setHeaderText("Your user will successfully added to the system.");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to add this user? ", ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> selectedOption = alert.showAndWait();
-            if (selectedOption.get()==ButtonType.OK){
+            if (selectedOption.get()==ButtonType.YES){
+                new Alert(Alert.AlertType.INFORMATION,"This user will successfully added to the system.").show();
                 UserStoreFormController ctrl = (UserStoreFormController) Navigation.navigate(Routes.USER_STORE);
-                jedis.hset(user.getRegistrationNumber(),"name",user.getFullName());
-                jedis.hset(user.getRegistrationNumber(),"nic",user.getNic());
-                jedis.hset(user.getRegistrationNumber(),"address",user.getAddress());
-                jedis.hset(user.getRegistrationNumber(),"contact",user.getPhoneNumber());
+                jedis.hset(keyUser,"regNumber",user.getRegistrationNumber());
+                jedis.hset(keyUser,"name",user.getFullName());
+                jedis.hset(keyUser,"nic",user.getNic());
+                jedis.hset(keyUser,"address",user.getAddress());
+                jedis.hset(keyUser,"contact",user.getPhoneNumber());
                 ctrl.tblUsersDetails.refresh();
                 btnAdd.getScene().getWindow().hide();
 
             }else {
+                jedis.del(keyUser);
                 IntMemoryDB.removeUser(user.getNic());
             }
         }else {
-            new Alert(Alert.AlertType.ERROR, "This User is already available in your library").showAndWait();
+            new Alert(Alert.AlertType.ERROR, "This User is already registered").showAndWait();
         }
 
     }

@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import redis.clients.jedis.Jedis;
 import util.Navigation;
 import util.Routes;
 
@@ -18,10 +19,21 @@ import java.io.IOException;
 public class LoginFormController {
     public PasswordField txtPassword;
     public Button btnLogin;
-    private String adminPassword = "Manelka";
+    private static String adminPassword = "Manelka";
+    Jedis jedis2;
 
     public void initialize(){
         Platform.runLater(txtPassword::requestFocus);
+        jedis2 = new Jedis("127.0.0.1", 10003);
+
+        adminPassword=jedis2.get("password");
+    }
+    public static String getAdminPassword() {
+        return adminPassword;
+    }
+
+    public static void setAdminPassword(String adminPassword) {
+        LoginFormController.adminPassword = adminPassword;
     }
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {

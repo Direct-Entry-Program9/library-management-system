@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="680.0" style="-fx-background-color: #c9eeff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardFormController">
+<AnchorPane fx:id="pneAdminDashboard" prefHeight="400.0" prefWidth="680.0" style="-fx-background-color: #c9eeff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardFormController">
    <children>
       <Label layoutX="20.0" layoutY="18.0" text="Admin Dashboard" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0">
          <font>
@@ -18,7 +18,7 @@
       </Label>
       <HBox alignment="CENTER" layoutY="111.0" spacing="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="btnManageBook" contentDisplay="TOP" focusTraversable="false" mnemonicParsing="false" onAction="#btnManageBookOnAction" prefHeight="130.0" prefWidth="130.0" styleClass="btnManageBook" stylesheets="@../css/adminDashboard.css" text="Manage Books">
+            <Button fx:id="btnManageBook" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnManageBookOnAction" prefHeight="130.0" prefWidth="130.0" styleClass="btnManageBook" stylesheets="@../css/adminDashboard.css" text="Manage Books">
                <font>
                   <Font name="DejaVu Sans Mono Bold" size="15.0" />
                </font>

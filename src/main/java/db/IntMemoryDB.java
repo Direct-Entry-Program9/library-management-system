@@ -85,7 +85,7 @@ public class IntMemoryDB {
     public static ArrayList<Book> findBooks(String query){
         ArrayList<Book> searchedBooks = new ArrayList<>();
         for (Book book : bookDataBase) {
-            if (book.getIsbnNumber().contains(query) || book.getAuthor().contains(query) || book.getName().contains(query)){
+            if (book.getIsbnNumber().toLowerCase().contains(query.toLowerCase()) || book.getAuthor().toLowerCase().contains(query.toLowerCase()) || book.getName().toLowerCase().contains(query.toLowerCase())){
                 searchedBooks.add(book);
             }
         }
@@ -94,7 +94,7 @@ public class IntMemoryDB {
     public static ArrayList<User> findUsers(String query){
         ArrayList<User> searchedUsers = new ArrayList<>();
         for (User user : userDataBase) {
-            if (user.getRegistrationNumber().contains(query) || user.getFullName().contains(query) || user.getNic().contains(query) || user.getAddress().contains(query)){
+            if (user.getRegistrationNumber().toLowerCase().contains(query.toLowerCase()) || user.getFullName().toLowerCase().contains(query.toLowerCase()) || user.getNic().toLowerCase().contains(query.toLowerCase()) || user.getAddress().toLowerCase().contains(query.toLowerCase())){
                 searchedUsers.add(user);
             }
         }
@@ -103,7 +103,7 @@ public class IntMemoryDB {
     public static ArrayList<IssueBook> findIssueBooks(String query){
         ArrayList<IssueBook> issueBookList = new ArrayList<>();
         for (IssueBook issueBook : issueBookDataBase) {
-            if (issueBook.getNic().contains(query)) {
+            if (issueBook.getNic().toLowerCase().contains(query.toLowerCase())) {
                 issueBookList.add(issueBook);
             }
         }

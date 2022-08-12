@@ -37,7 +37,7 @@ public class BookStoreFormController {
 
     public void initialize(){
 
-        jedis = new Jedis("127.0.0.1", 10001);
+        jedis = new Jedis("127.0.0.1", 10003);
 
         ObservableList<Book> olBooks = FXCollections.observableArrayList(IntMemoryDB.getBookDataBase());
         tblBooksDetails.setItems(olBooks);
@@ -84,7 +84,7 @@ public class BookStoreFormController {
             ObservableList<Book> olBooks = tblBooksDetails.getItems();
             olBooks.remove(selectedBook);
             IntMemoryDB.removeBook(selectedBook.getIsbnNumber());
-            jedis.del(selectedBook.getIsbnNumber());
+            jedis.del("book-"+selectedBook.getIsbnNumber());
         }
         tblBooksDetails.getSelectionModel().clearSelection();
 

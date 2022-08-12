@@ -36,7 +36,7 @@ public class UserStoreFormController {
 
     public void initialize(){
 
-        jedis = new Jedis("127.0.0.1",10002);
+        jedis = new Jedis("127.0.0.1",10003);
 
         ObservableList<User> olUser = FXCollections.observableArrayList(IntMemoryDB.getUserDataBase());
         tblUsersDetails.setItems(olUser);
@@ -126,7 +126,7 @@ public class UserStoreFormController {
         if (selectedOption.get()==ButtonType.YES){
             ObservableList<User> olUsers = tblUsersDetails.getItems();
             olUsers.remove(selectedUser);
-            jedis.del(selectedUser.getRegistrationNumber());
+            jedis.del("user-"+selectedUser.getRegistrationNumber());
             IntMemoryDB.removeUser(selectedUser.getNic());
         }
         tblUsersDetails.getSelectionModel().clearSelection();

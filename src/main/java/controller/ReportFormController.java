@@ -13,8 +13,6 @@ import util.Navigation;
 import util.Routes;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class ReportFormController {
     public Button btnBack;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pneContainer" prefHeight="316.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutFormController">
+   <children>
+      <Label alignment="CENTER" layoutY="15.0" text="About LMS" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="DejaVu Serif Condensed Bold" size="21.0" />
+         </font></Label>
+      <JFXTextArea focusColor="WHITE" layoutX="15.0" layoutY="55.0" prefHeight="240.0" prefWidth="445.0" text="Library Management System (Community Edition)&#10;Runtime version: 1.0.0&#10;Built on Augest 12,2022&#10;&#10;Licensed to Library Admin&#10;Subscription is inactive.&#10;For trail purposes only.&#10;&#10;Powered by open-source software&#10;Copyright © 2022-2024 DEP9. All Right Reserved. &#10;This project is licensed under the MIT License." unFocusColor="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="5.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextArea>
+      <ImageView fitHeight="149.0" fitWidth="175.0" layoutX="290.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/photo-library-icon-3.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

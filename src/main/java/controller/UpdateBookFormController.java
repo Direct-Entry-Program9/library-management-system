@@ -24,27 +24,52 @@ public class UpdateBookFormController {
     Jedis jedis;
 
     public void initialize(){
-        jedis = new Jedis("127.0.0.1", 10001);
+        jedis = new Jedis("127.0.0.1", 10003);
         txtISBN.setDisable(true);
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws IOException {
-        Book book = new Book(txtISBN.getText(), txtBookName.getText(), txtAuthor.getText(), txtQuantity.getText());
-        boolean success = IntMemoryDB.updateBook(bookIndex, book);
-        jedis.hset(book.getIsbnNumber(),"book-name",book.getName());
-        jedis.hset(book.getIsbnNumber(),"book-author",book.getAuthor());
-        jedis.hset(book.getIsbnNumber(),"book-qt",book.getQuantity());
 
-        if (success){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure ? ", ButtonType.OK, ButtonType.CANCEL);
-            alert.setHeaderText("Your book will successfully updated to the system.");
-            Optional<ButtonType> selectedOption = alert.showAndWait();
-            if (selectedOption.get()==ButtonType.OK){
-                BookStoreFormController ctrl = (BookStoreFormController) Navigation.navigate(Routes.BOOK_STORE);
-                ctrl.tblBooksDetails.refresh();
-                btnUpdate.getScene().getWindow().hide();
-            }
+        if (IntMemoryDB.isEmpty(txtISBN.getText())) {
+            txtISBN.requestFocus();
+            return;
         }
+        else if(!IntMemoryDB.isNumber(txtISBN.getText())){
+            new Alert(Alert.AlertType.ERROR,"Please enter valid ISBN").showAndWait();
+            txtISBN.requestFocus();
+            return;
+        } else if (IntMemoryDB.isEmpty(txtBookName.getText())) {
+            txtBookName.requestFocus();
+            return;
+        } else if (IntMemoryDB.isEmpty(txtAuthor.getText())) {
+            txtAuthor.requestFocus();
+            return;
+        } else if (!IntMemoryDB.isName(txtAuthor.getText())) {
+            new Alert(Alert.AlertType.ERROR,"Author Name should be letter").showAndWait();
+            txtAuthor.requestFocus();
+            return;
+        } else if (IntMemoryDB.isEmpty(txtQuantity.getText())) {
+            txtAuthor.requestFocus();
+            return;
+        } else if (!IntMemoryDB.isNumber(txtQuantity.getText())) {
+            new Alert(Alert.AlertType.ERROR,"Please enter valid Quantity").showAndWait();
+            txtISBN.requestFocus();
+            return;
+        }
+
+        Book book = new Book(txtISBN.getText(), txtBookName.getText(), txtAuthor.getText(), txtQuantity.getText());
+
+        String keyBook = "book-"+book.getIsbnNumber();
+        IntMemoryDB.updateBook(bookIndex, book);
+        jedis.hset(keyBook,"book-isbn",book.getIsbnNumber());
+        jedis.hset(keyBook,"book-name",book.getName());
+        jedis.hset(keyBook,"book-author",book.getAuthor());
+        jedis.hset(keyBook,"book-qt",book.getQuantity());
+
+        new Alert(Alert.AlertType.INFORMATION, "Your book will successfully updated to the system.").showAndWait();
+        BookStoreFormController ctrl = (BookStoreFormController) Navigation.navigate(Routes.BOOK_STORE);
+        ctrl.tblBooksDetails.refresh();
+        btnUpdate.getScene().getWindow().hide();
 
     }
 
